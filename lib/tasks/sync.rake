@@ -1,3 +1,26 @@
+require 'rss'
+require 'open-uri'
+namespace :sync do
+  task feeds: :environment do
+    feeds = Feed.all
+    feeds.each do |feed|
+      url = feed.url
+      open(url) do |rss|
+        content = RSS::Parser.parse(rss)
+        content.items.each do |item|
+          local_entry = feed.entries.where(title: item.title).first_or_initialize
+          local_entry.update_attributes(content: item.description, author: item.author, url: item.link, published: item.pubDate)
+
+          puts "Item: #{item.title}"
+        end
+      end
+    end
+  end
+end
+
+
+#---------------------------------------------
+
 # namespace :sync do
 #   task feeds: [:environment] do
 #     Feed.all.each do |feed|
@@ -9,18 +32,6 @@
 #       end
 #       p "Synced Feed - #{feed.name}"
 #     end
-#   end
-# end
-#
-# require 'rss'
-# require 'open-uri'
-#
-# url = 'http://www.ruby-lang.org/en/feeds/news.rss'
-# open(url) do |rss|
-#   feed = RSS::Parser.parse(rss)
-#   puts "Title: #{feed.channel.title}"
-#   feed.items.each do |item|
-#     puts "Item: #{item.title}"
 #   end
 # end
 #

@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Feed : <%= @feed.id %></h3>
 <p>
   <strong>Name:</strong>
   <%= @feed.name %>
@@ -15,5 +16,11 @@
   <%= @feed.description %>
 </p>
 
+<p>
+  <%= link_to 'Entries', entries_path %>
+</p>
+
+
 <%= link_to 'Edit', edit_feed_path(@feed) %> |
 <%= link_to 'Back', feeds_path %>
+

@@ -1,5 +1,5 @@
-<h1>Entries#show</h1>
-<p>Find me in app/views/entries/show.html.erb</p>
+<h1>Entry : <%= @entry.id %></h1>
+
 
 <div class="container">
   <h3><%= link_to @entry.title, @entry.url %></h3>
@@ -8,3 +8,5 @@
     <%= @entry.content.html_safe %>
   </p>
 </div>
+
+<td><%= link_to 'Go to Feed', entries_path(@entry.feed) %></td>
