@@ -6,8 +6,10 @@ namespace :sync do
     feeds.each do |feed|
       url = feed.url
       open(url) do |rss|
-        content = RSS::Parser.parse(rss)
+        content = RSS::Parser.parse(rss, false)
+
         content.items.each do |item|
+          # debugger
           local_entry = feed.entries.where(title: item.title).first_or_initialize
           local_entry.update_attributes(content: item.description, author: item.author, url: item.link, published: item.pubDate)
 

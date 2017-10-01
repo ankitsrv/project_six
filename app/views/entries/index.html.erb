@@ -2,10 +2,10 @@
 
 
 <div class="container">
-  <% @entries&.each do |entry| %>
+  <% @entries&.each_with_index do |entry, i| %>
       <div class="panel panel-default">
         <div class="panel-body">
-          <%= entry.id %> : <%= link_to entry.title, entry %> - <i> published_at <%= entry.published %></i>
+          <%= i+1 %> : <%= link_to entry.title, entry %> - <i> published_at <%= entry.published %></i>
         </div>
       </div>
   <% end %>

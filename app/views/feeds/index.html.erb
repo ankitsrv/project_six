@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>S.N.</th>
       <th>Name</th>
       <th>Url</th>
       <th>Description</th>
@@ -13,8 +14,9 @@
   </thead>
 
   <tbody>
-    <% @feeds.each do |feed| %>
+    <% @feeds.each_with_index do |feed, i| %>
       <tr>
+        <td><%= i+1 %></td>
         <td><%= feed.name %></td>
         <td><%= feed.url %></td>
         <td><%= feed.description %></td>
