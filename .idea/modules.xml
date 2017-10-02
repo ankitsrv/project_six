@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/project_six.iml" filepath="$PROJECT_DIR$/.idea/project_six.iml" />
+      <module fileurl="file://$USER_HOME$/workspace/rails/feed_reader/.idea/project_six.iml" filepath="$USER_HOME$/workspace/rails/feed_reader/.idea/project_six.iml" />
     </modules>
   </component>
 </project>
